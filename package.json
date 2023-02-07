@@ -2,7 +2,8 @@
   "name": "bpcentiles",
   "version": "0.1.0",
   "scripts": {
-    "serve": "http-server -p 8000 -c-1 ."
+    "serve": "http-server -p 9203 -c-1 .",
+    "start": "npm run serve"
   },
   "dependencies": {
     "fhirclient": "^2.1.0"

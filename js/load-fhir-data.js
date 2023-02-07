@@ -4,7 +4,7 @@
   FhirLoader.demographics = function(client) {
     
     return client.patient.read().then(function(pt) {
-      var name = pt.name[0].given.join(" ") +" "+ pt.name[0].family.join(" ");
+      var name = pt.name[0].given.join(" ") +" "+ pt.name[0].family;
       var birthday = new Date(pt.birthDate).toISOString();
       var gender = pt.gender;
 
@@ -107,16 +107,16 @@
     });
 
     return vitals;
-  };
+  }
 
   function getObservations(client) {
     var query = new URLSearchParams();
     query.set("code", ["http://loinc.org|8302-2","http://loinc.org|55284-4"].join(","));
     return client.patient.request("Observation?" + query, { flat: true });
-  };
+  }
 
   function getEncounters(client) {
     return client.patient.request("Encounter", { flat: true });
-  };
+  }
 
 })();
